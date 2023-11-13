@@ -46,14 +46,26 @@ class Menu {
     });
   }
 
+  /**
+   * 총 주문한 디저트의 개수
+   * @returns {number} totalDessert
+   */
   calcultaeTotalDessert() {
     return Util.extractFoodTotalCount(this.#dessert);
   }
 
+  /**
+   * 총 주문한 메인 메뉴의 개수
+   * @returns {number} totalMainMenu
+   */
   calcultaeTotalMain() {
     return Util.extractFoodTotalCount(this.#main);
   }
 
+  /**
+   * 에피타이저, 메인메뉴, 디저트, 음료 중 1개이상 주문한 메뉴만 추려서 반환
+   * @returns {{[key:string]: number}} buyingMenu
+   */
   calculateBuyingMenu() {
     const totalFood = { ...this.#appetizer, ...this.#main, ...this.#dessert, ...this.#beverage };
     const foodNames = Util.extractFoodName(totalFood);
@@ -64,11 +76,19 @@ class Menu {
     return buyingMenu;
   }
 
+  /**
+   * 12만원 이상 구매 여부 반환
+   * @returns {boolean} isPresentedAmount
+   */
   isPresentedAmount() {
     if (this.#totalPrice >= PRESENTED_AMOUNT) return true;
     return false;
   }
 
+  /**
+   * 할인전 총 금액 반환
+   * @returns {number} totalPrice
+   */
   getTotalPrice() {
     return this.#totalPrice;
   }
