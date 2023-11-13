@@ -1,6 +1,6 @@
 import CustomError from './error/CustomError.js';
 import Util from './util/Util.js';
-import { FOOD, PRICE, APPETIZER, MAIN, DESSERT, BEVERAGE } from './constants/constant.js';
+import { FOOD, PRICE, APPETIZER, MAIN, DESSERT, BEVERAGE, PRESENTED_AMOUNT } from './constants/constant.js';
 import { ERROR_MESSAGE } from './constants/message.js';
 
 class Menu {
@@ -52,6 +52,21 @@ class Menu {
 
   calcultaeTotalMain() {
     return Util.extractFoodTotalCount(this.#main);
+  }
+
+  calculateBuyingMenu() {
+    const totalFood = { ...this.#appetizer, ...this.#main, ...this.#dessert, ...this.#beverage };
+    const foodNames = Util.extractFoodName(totalFood);
+    const buyingMenu = {};
+    foodNames.forEach((food) => {
+      if (totalFood[food]) buyingMenu[food] = totalFood[food];
+    });
+    return buyingMenu;
+  }
+
+  isPresentedAmount() {
+    if (this.#totalPrice >= PRESENTED_AMOUNT) return true;
+    return false;
   }
 
   getTotalPrice() {

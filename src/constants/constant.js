@@ -60,6 +60,7 @@ const END_DAY = 31;
 
 const CHRISTMAS_BASE_DISCOUNT = 1000;
 const DAYS_DISCOUNT = 2023;
+const PRESENTED_AMOUNT = 120000;
 
 export const FOOD_OBJ = {
   FOOD,
@@ -75,6 +76,7 @@ export const FOOD_OBJ = {
   CHRISTMAS,
   START_DAY,
   END_DAY,
+  PRESENTED_AMOUNT,
 };
 
 export {
@@ -91,4 +93,5 @@ export {
   CHRISTMAS,
   START_DAY,
   END_DAY,
+  PRESENTED_AMOUNT,
 };
