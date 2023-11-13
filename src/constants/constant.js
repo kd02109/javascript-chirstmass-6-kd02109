@@ -52,6 +52,43 @@ const BEVERAGE = Object.freeze({
   [FOOD.샴페인]: 0,
 });
 
-export const FOOD_OBJ = { FOOD, PRICE, MAIN, APPETIZER, DESSERT, BEVERAGE };
+const DAYS = Object.freeze(['목', '금', '토', '일', '월', '화', '수']);
+const SPECIAL_DISCOUNT = Object.freeze([3, 10, 17, 24, 25, 31]);
+const CHRISTMAS = 25;
+const START_DAY = 1;
+const END_DAY = 31;
 
-export { FOOD, PRICE, MAIN, APPETIZER, DESSERT, BEVERAGE };
+const CHRISTMAS_BASE_DISCOUNT = 1000;
+const DAYS_DISCOUNT = 2023;
+
+export const FOOD_OBJ = {
+  FOOD,
+  PRICE,
+  MAIN,
+  APPETIZER,
+  DESSERT,
+  BEVERAGE,
+  DAYS,
+  SPECIAL_DISCOUNT,
+  CHRISTMAS_BASE_DISCOUNT,
+  DAYS_DISCOUNT,
+  CHRISTMAS,
+  START_DAY,
+  END_DAY,
+};
+
+export {
+  FOOD,
+  PRICE,
+  MAIN,
+  APPETIZER,
+  DESSERT,
+  BEVERAGE,
+  DAYS,
+  SPECIAL_DISCOUNT,
+  DAYS_DISCOUNT,
+  CHRISTMAS_BASE_DISCOUNT,
+  CHRISTMAS,
+  START_DAY,
+  END_DAY,
+};
