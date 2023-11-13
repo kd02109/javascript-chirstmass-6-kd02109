@@ -21,6 +21,7 @@ class App {
       try {
         const day = await InputView.readDate(OUTPUT_VIEW_MESSAGE.date);
         this.#reservationDate = new ReservationDate(day);
+        break;
       } catch (e) {
         OutputView.printMessage(e.message);
       }
@@ -32,6 +33,7 @@ class App {
       try {
         const menu = await InputView.readDate(OUTPUT_VIEW_MESSAGE.menu);
         this.#menu = new Menu(menu);
+        break;
       } catch (e) {
         OutputView.printMessage(e.message);
       }
