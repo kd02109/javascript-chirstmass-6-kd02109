@@ -1,5 +1,6 @@
 import Menu from '../src/Menu.js';
 import CustomError from '../src/error/CustomError.js';
+import { FOOD } from '../src/constants/constant.js';
 import { ERROR_MESSAGE } from '../src/constants/message.js';
 
 describe('Menu Class 테스트 실행', () => {
@@ -69,6 +70,35 @@ describe('Menu Class 테스트 실행', () => {
 
       // then
       expect(menu.getTotalPrice()).toBe(result);
+    },
+  );
+
+  // given
+  test.each([
+    [['타파스-1,제로콜라-1', { [FOOD.타파스]: 1, [FOOD.제로콜라]: 1 }]],
+    [
+      [
+        '티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1',
+        { [FOOD.티본스테이크]: 1, [FOOD.바비큐립]: 1, [FOOD.초코케이크]: 2, [FOOD.제로콜라]: 1 },
+      ],
+    ],
+  ])('구입한 상품 목록을 정확히 계산하는지 확인합니다.', ([input, result]) => {
+    // when
+    const menu = new Menu(input);
+
+    // then
+    expect(menu.calculateBuyingMenu()).toEqual(result);
+  });
+
+  // given
+  test.each([[['타파스-1,제로콜라-1', false]], [['티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1', true]]])(
+    '할인 전 구입 금액이 12만원 이상일때, 샴페인 1개 증정 여부를 확인합니다.',
+    ([input, result]) => {
+      // when
+      const menu = new Menu(input);
+
+      // then
+      expect(menu.isPresentedAmount()).toEqual(result);
     },
   );
 });

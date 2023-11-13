@@ -13,11 +13,11 @@ class Util {
 
   /**
    *
-   * @param {[string, number][]} data
+   * @param {{[key: string]:number} } data
    * @returns {string[]} array
    */
   static extractFoodName(data) {
-    return data.map((item) => item[0]);
+    return Object.keys(data);
   }
 
   /**

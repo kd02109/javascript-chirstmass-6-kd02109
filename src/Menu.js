@@ -29,7 +29,7 @@ class Menu {
       total += count;
     });
 
-    const foodList = Util.extractFoodName(data);
+    const foodList = data.map((item) => item[0]);
     const foodSet = new Set(foodList);
     if (foodList.length !== foodSet.size) throw CustomError.inputView(ERROR_MESSAGE.order);
 
