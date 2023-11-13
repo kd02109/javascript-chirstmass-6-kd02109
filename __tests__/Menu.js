@@ -37,6 +37,15 @@ describe('Menu Class 테스트 실행', () => {
   });
 
   // given
+  test.each(['제로콜라-5,바비큐립-0,초코케이크-0', '레드와인-6,티본스테이크-0', '샴페인-4,초코케이크-0'])(
+    '음료만 주문했는지 확인합니다.',
+    (input) => {
+      // when then
+      expect(() => new Menu(input)).toThrow(new CustomError(ERROR_MESSAGE.onlyBeverage));
+    },
+  );
+
+  // given
   test.each([[['타파스-1,제로콜라-1,티본스테이크-2,초코케이크-5', 5]], [['타파스-1,양송이수프-2, 아이스크림-1', 1]]])(
     '디저트 메뉴의 총 개수를 정상적으로 계산하는지 확인합니다.',
     ([input, result]) => {
