@@ -24,7 +24,7 @@ class ReservationDate {
   }
 
   calculateChristmasDiscount() {
-    if (this.#date <= CHRISTMAS) return (CHRISTMAS - START_DAY) * CHRISTMAS_BASE_DISCOUNT;
+    if (this.#date <= CHRISTMAS) return (this.#date - START_DAY) * 100 + CHRISTMAS_BASE_DISCOUNT;
     return 0;
   }
 
