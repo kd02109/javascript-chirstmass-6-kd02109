@@ -31,7 +31,7 @@ const PRICE = Object.freeze({
 const APPETIZER = Object.freeze({
   [FOOD.양송이수프]: 0,
   [FOOD.타파스]: 0,
-  [FOOD.시저샐러드]: 8000,
+  [FOOD.시저샐러드]: 0,
 });
 
 const MAIN = Object.freeze({
@@ -42,14 +42,14 @@ const MAIN = Object.freeze({
 });
 
 const DESSERT = Object.freeze({
-  [FOOD.초코케이크]: 15000,
-  [FOOD.아이스크림]: 5000,
+  [FOOD.초코케이크]: 0,
+  [FOOD.아이스크림]: 0,
 });
 
 const BEVERAGE = Object.freeze({
   [FOOD.제로콜라]: 0,
-  [FOOD.레드와인]: 60000,
-  [FOOD.샴페인]: 25000,
+  [FOOD.레드와인]: 0,
+  [FOOD.샴페인]: 0,
 });
 
 export const FOOD_OBJ = { FOOD, PRICE, MAIN, APPETIZER, DESSERT, BEVERAGE };

@@ -1,5 +1,6 @@
-import { FOOD, PRICE, APPETIZER, MAIN, DESSERT, BEVERAGE } from './constants/constant.js';
 import CustomError from './error/CustomError.js';
+import Util from './util/Util.js';
+import { FOOD, PRICE, APPETIZER, MAIN, DESSERT, BEVERAGE } from './constants/constant.js';
 import { ERROR_MESSAGE } from './constants/message.js';
 
 class Menu {
@@ -11,23 +12,12 @@ class Menu {
 
   #appetizer = { ...APPETIZER };
 
-  #total;
+  #totalPrice;
 
   constructor(menu) {
-    const data = this.#dataSplit(menu);
+    const data = Util.countMethod(menu);
     this.#validate(data);
-  }
-
-  /**
-   *
-   * @param {string} menu
-   * @returns {[string, number][]} array
-   */
-  #dataSplit(menu) {
-    return menu
-      .split(',')
-      .map((item) => item.split('-'))
-      .map(([food, count]) => [food.trim(), Number(count)]);
+    this.#calculateMenuAndPrice(data);
   }
 
   #validate(data) {
@@ -39,11 +29,21 @@ class Menu {
       total += count;
     });
 
-    const foodList = data.map((item) => item[0]);
+    const foodList = Util.extractFoodName(data);
     const foodSet = new Set(foodList);
     if (foodList.length !== foodSet.size) throw CustomError.inputView(ERROR_MESSAGE.order);
 
     if (total > 20 || total < 1) throw CustomError.inputView(ERROR_MESSAGE.moreThan20);
+  }
+
+  #calculateMenuAndPrice(data) {
+    data.forEach(([food, count]) => {
+      if (this.#appetizer[food]) this.#appetizer[food] += count;
+      if (this.#dessert[food]) this.#dessert[food] += count;
+      if (this.#main[food]) this.#main[food] += count;
+      if (this.#beverage[food]) this.#beverage[food] += count;
+      this.#totalPrice += PRICE[food] * count;
+    });
   }
 }
 
