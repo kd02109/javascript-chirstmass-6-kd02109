@@ -23,6 +23,10 @@ class ReservationDate {
     return day;
   }
 
+  makeDateString() {
+    return `12월 ${this.#date}일에 우테코 식장에서 받을 이벤트 혜택 미리 보기!\n`;
+  }
+
   calculateChristmasDiscount() {
     if (this.#date <= CHRISTMAS) return (this.#date - START_DAY) * 100 + CHRISTMAS_BASE_DISCOUNT;
     return 0;

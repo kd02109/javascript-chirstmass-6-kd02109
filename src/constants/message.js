@@ -4,8 +4,7 @@ const OUTPUT_VIEW_MESSAGE = Object.freeze({
 });
 
 const INPUT_VIEW_MESSAGE = Object.freeze({
-  hello: '안녕하세요! 우테코 식장 12월 이벤트 플래너입니다.',
-  makeDateEvent: (day) => `12월 ${day}일에 우테코 식장에서 받을 이벤트 혜택 미리 보기!\n`,
+  hello: '안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.',
   menu: '<주문 메뉴>',
   totalPrice: '<할인 전 총주문 금액>',
   giftMenu: '<증정 메뉴>',
@@ -25,9 +24,9 @@ const BEDGE = Object.freeze({
 });
 
 const ERROR_MESSAGE = Object.freeze({
-  date: '유효하지 않은 날짜입니다. 다시 입력해 주세요.',
-  moreThan20: '총 주문 메뉴의 개수는 20개가 넘어가서는 안됩니다.',
-  order: '유효하지 않은 주문입니다. 다시 입력해 주세요',
+  date: '유효하지 않은 날짜입니다. 다시 입력해 주세요.\n',
+  moreThan20: '총 주문 메뉴의 개수는 20개가 넘어가서는 안됩니다.\n',
+  order: '유효하지 않은 주문입니다. 다시 입력해 주세요\n',
 });
 
 export const MESSAGE = { OUTPUT_VIEW_MESSAGE, INPUT_VIEW_MESSAGE, BEDGE, ERROR_MESSAGE };
