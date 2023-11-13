@@ -29,6 +29,15 @@ class Util {
     const countList = Object.values(object);
     return countList.reduce((acc, cur) => acc + cur);
   }
+
+  /**
+   *
+   * @param {number} price
+   * @returns {string} totalCount
+   */
+  static chagePriceToString(price) {
+    return price.toLocaleString();
+  }
 }
 
 export default Util;

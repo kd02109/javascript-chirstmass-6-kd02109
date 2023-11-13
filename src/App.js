@@ -2,6 +2,7 @@ import Menu from './Menu.js';
 import ReservationDate from './ReservationDate.js';
 import OutputView from './view/OutputView.js';
 import InputView from './view/InputView.js';
+import Util from './util/Util.js';
 import { OUTPUT_VIEW_MESSAGE, INPUT_VIEW_MESSAGE } from './constants/message.js';
 
 class App {
@@ -13,7 +14,8 @@ class App {
     OutputView.printMessage(INPUT_VIEW_MESSAGE.hello);
     await this.#initReservationDate();
     await this.#initMenu();
-    OutputView.printMessage(this.#reservationDate.makeDateString());
+
+    this.#previewEventBenefits();
   }
 
   async #initReservationDate() {
@@ -38,6 +40,24 @@ class App {
         OutputView.printMessage(e.message);
       }
     }
+  }
+
+  #previewEventBenefits() {
+    OutputView.printMessage(this.#reservationDate.makeDateString());
+    this.#calculateMenu();
+    this.#calculateTotalPriceBeforeDiscount();
+  }
+
+  #calculateMenu() {
+    const menu = this.#menu.calculateBuyingMenu();
+    OutputView.printMessage(INPUT_VIEW_MESSAGE.menu);
+    OutputView.printMenu(menu);
+  }
+
+  #calculateTotalPriceBeforeDiscount() {
+    OutputView.printMessage(INPUT_VIEW_MESSAGE.totalPrice);
+    const totalPrice = Util.chagePriceToString(this.#menu.getTotalPrice());
+    OutputView.printMessage(`${totalPrice}${INPUT_VIEW_MESSAGE.won}`);
   }
 }
 

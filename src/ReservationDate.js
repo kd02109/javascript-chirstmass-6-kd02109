@@ -1,6 +1,13 @@
 import CustomError from './error/CustomError.js';
 import { ERROR_MESSAGE } from './constants/message.js';
-import { SPECIAL_DISCOUNT, DAYS, CHRISTMAS_BASE_DISCOUNT, CHRISTMAS, START_DAY, END_DAY } from './constants/constant';
+import {
+  SPECIAL_DISCOUNT,
+  DAYS,
+  CHRISTMAS_BASE_DISCOUNT,
+  CHRISTMAS,
+  START_DAY,
+  END_DAY,
+} from './constants/constant.js';
 
 class ReservationDate {
   #date;
@@ -24,7 +31,7 @@ class ReservationDate {
   }
 
   makeDateString() {
-    return `12월 ${this.#date}일에 우테코 식장에서 받을 이벤트 혜택 미리 보기!\n`;
+    return `12월 ${this.#date}일에 우테코 식장에서 받을 이벤트 혜택 미리 보기!`;
   }
 
   calculateChristmasDiscount() {
