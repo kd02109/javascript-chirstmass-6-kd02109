@@ -12,7 +12,7 @@ class Menu {
 
   #appetizer = { ...APPETIZER };
 
-  #totalPrice;
+  #totalPrice = 0;
 
   constructor(menu) {
     const data = Util.countMethod(menu);
@@ -38,12 +38,24 @@ class Menu {
 
   #calculateMenuAndPrice(data) {
     data.forEach(([food, count]) => {
-      if (this.#appetizer[food]) this.#appetizer[food] += count;
-      if (this.#dessert[food]) this.#dessert[food] += count;
-      if (this.#main[food]) this.#main[food] += count;
-      if (this.#beverage[food]) this.#beverage[food] += count;
+      if (this.#appetizer[food] !== undefined) this.#appetizer[food] += count;
+      if (this.#dessert[food] !== undefined) this.#dessert[food] += count;
+      if (this.#main[food] !== undefined) this.#main[food] += count;
+      if (this.#beverage[food] !== undefined) this.#beverage[food] += count;
       this.#totalPrice += PRICE[food] * count;
     });
+  }
+
+  calcultaeTotalDessert() {
+    return Util.extractFoodTotalCount(this.#dessert);
+  }
+
+  calcultaeTotalMain() {
+    return Util.extractFoodTotalCount(this.#main);
+  }
+
+  getTotalPrice() {
+    return this.#totalPrice;
   }
 }
 

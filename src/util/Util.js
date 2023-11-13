@@ -19,6 +19,16 @@ class Util {
   static extractFoodName(data) {
     return data.map((item) => item[0]);
   }
+
+  /**
+   *
+   * @param {{[key: string]: number}} object
+   * @returns {number} totalCount
+   */
+  static extractFoodTotalCount(object) {
+    const countList = Object.values(object);
+    return countList.reduce((acc, cur) => acc + cur);
+  }
 }
 
 export default Util;
