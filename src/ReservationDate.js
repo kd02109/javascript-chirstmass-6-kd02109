@@ -1,13 +1,5 @@
-import CustomError from './error/CustomError.js';
-import { ERROR_MESSAGE } from './constants/message.js';
-import {
-  SPECIAL_DISCOUNT,
-  DAYS,
-  CHRISTMAS_BASE_DISCOUNT,
-  CHRISTMAS,
-  START_DAY,
-  END_DAY,
-} from './constants/constant.js';
+import ReservationDateValidation from './validation/ReservationDateValidation.js';
+import { SPECIAL_DISCOUNT, DAYS, CHRISTMAS_BASE_DISCOUNT, CHRISTMAS, START_DAY } from './constants/constant.js';
 
 class ReservationDate {
   #date;
@@ -19,9 +11,8 @@ class ReservationDate {
   }
 
   #validate(date) {
-    if (Number.isNaN(date)) throw CustomError.inputView(ERROR_MESSAGE.date);
-
-    if (date < START_DAY || date > END_DAY) throw CustomError.inputView(ERROR_MESSAGE.date);
+    ReservationDateValidation.validateNumber(date);
+    ReservationDateValidation.validateUnderAndOver(date);
   }
 
   #getDate() {
