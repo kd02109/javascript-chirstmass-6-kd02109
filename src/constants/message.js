@@ -17,12 +17,6 @@ const INPUT_VIEW_MESSAGE = Object.freeze({
   none: '없음',
 });
 
-const BEDGE = Object.freeze({
-  star: Object.freeze(['별', 5000]),
-  tree: Object.freeze(['트리', 10000]),
-  santa: Object.freeze(['산타', 20000]),
-});
-
 const ERROR_MESSAGE = Object.freeze({
   date: '유효하지 않은 날짜입니다. 다시 입력해 주세요.',
   moreThan20: '총 주문 메뉴의 개수는 20개가 넘어가서는 안됩니다.',
@@ -38,5 +32,5 @@ const BENEFIT_MESSAGE = Object.freeze({
   gift: '증정 이벤트: ',
 });
 
-export const MESSAGE = { OUTPUT_VIEW_MESSAGE, INPUT_VIEW_MESSAGE, BEDGE, ERROR_MESSAGE, BENEFIT_MESSAGE };
-export { OUTPUT_VIEW_MESSAGE, INPUT_VIEW_MESSAGE, BEDGE, ERROR_MESSAGE, BENEFIT_MESSAGE };
+export const MESSAGE = { OUTPUT_VIEW_MESSAGE, INPUT_VIEW_MESSAGE, ERROR_MESSAGE, BENEFIT_MESSAGE };
+export { OUTPUT_VIEW_MESSAGE, INPUT_VIEW_MESSAGE, ERROR_MESSAGE, BENEFIT_MESSAGE };

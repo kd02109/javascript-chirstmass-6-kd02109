@@ -1,7 +1,8 @@
 import Menu from '../src/Menu.js';
 import ReservationDate from '../src/ReservationDate.js';
 import Discount from '../src/Discount.js';
-import { BEDGE, INPUT_VIEW_MESSAGE } from '../src/constants/message.js';
+import { BEDGE } from '../src/constants/constant.js';
+import { INPUT_VIEW_MESSAGE } from '../src/constants/message.js';
 
 describe('Discount Class 기능 검증 구현', () => {
   // given

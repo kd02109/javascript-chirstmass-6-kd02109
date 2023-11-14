@@ -52,49 +52,45 @@ const BEVERAGE = Object.freeze({
   [FOOD.샴페인]: 0,
 });
 
-const DAYS = Object.freeze(['목', '금', '토', '일', '월', '화', '수']);
-const SPECIAL_DISCOUNT = Object.freeze([3, 10, 17, 24, 25, 31]);
-const CHRISTMAS = 25;
-const START_DAY = 1;
-const END_DAY = 31;
+const DAY_CONSTANT = Object.freeze({
+  days: Object.freeze(['목', '금', '토', '일', '월', '화', '수']),
+  specialDiscountDays: Object.freeze([3, 10, 17, 24, 25, 31]),
+  christmas: 25,
+  startDay: 1,
+  endDay: 31,
+});
 
-const CHRISTMAS_BASE_DISCOUNT = 1000;
-const DAYS_DISCOUNT = 2023;
-const PRESENTED_AMOUNT = 120000;
-const GIFT_NUMBER = 1;
+const PRICE_CONSTANT = Object.freeze({
+  baseDiscountPrice: 0,
+  christmasBaseDiscountPrice: 1000,
+  daysDiscountPrice: 2023,
+  presentedAmountPrice: 120000,
+  specialDicountPrice: 1000,
+});
 
-export const FOOD_OBJ = {
+const COUNT_CONSTANT = Object.freeze({
+  numberOfMinmun: 1,
+  numberOfMaximun: 20,
+  numberOfGift: 1,
+});
+
+const BEDGE = Object.freeze({
+  star: Object.freeze(['별', 5000]),
+  tree: Object.freeze(['트리', 10000]),
+  santa: Object.freeze(['산타', 20000]),
+});
+
+export const CONSTANT_OBJ = {
   FOOD,
   PRICE,
   MAIN,
   APPETIZER,
   DESSERT,
   BEVERAGE,
-  DAYS,
-  SPECIAL_DISCOUNT,
-  CHRISTMAS_BASE_DISCOUNT,
-  DAYS_DISCOUNT,
-  CHRISTMAS,
-  START_DAY,
-  END_DAY,
-  PRESENTED_AMOUNT,
-  GIFT_NUMBER,
+  DAY_CONSTANT,
+  PRICE_CONSTANT,
+  COUNT_CONSTANT,
+  BEDGE,
 };
 
-export {
-  FOOD,
-  PRICE,
-  MAIN,
-  APPETIZER,
-  DESSERT,
-  BEVERAGE,
-  DAYS,
-  SPECIAL_DISCOUNT,
-  DAYS_DISCOUNT,
-  CHRISTMAS_BASE_DISCOUNT,
-  CHRISTMAS,
-  START_DAY,
-  END_DAY,
-  PRESENTED_AMOUNT,
-  GIFT_NUMBER,
-};
+export { FOOD, PRICE, MAIN, APPETIZER, DESSERT, BEVERAGE, DAY_CONSTANT, PRICE_CONSTANT, COUNT_CONSTANT, BEDGE };

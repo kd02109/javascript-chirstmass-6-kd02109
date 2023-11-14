@@ -1,5 +1,5 @@
 import ReservationDateValidation from './validation/ReservationDateValidation.js';
-import { SPECIAL_DISCOUNT, DAYS, CHRISTMAS_BASE_DISCOUNT, CHRISTMAS, START_DAY } from './constants/constant.js';
+import { DAY_CONSTANT, PRICE_CONSTANT } from './constants/constant.js';
 
 class ReservationDate {
   #date;
@@ -16,8 +16,8 @@ class ReservationDate {
   }
 
   #getDate() {
-    const index = this.#date % DAYS.length;
-    const day = DAYS[index];
+    const index = this.#date % DAY_CONSTANT.days.length;
+    const day = DAY_CONSTANT.days[index];
     return day;
   }
 
@@ -34,7 +34,8 @@ class ReservationDate {
    * @returns {number} christmasDiscount
    */
   calculateChristmasDiscount() {
-    if (this.#date <= CHRISTMAS) return (this.#date - START_DAY) * 100 + CHRISTMAS_BASE_DISCOUNT;
+    if (this.#date <= DAY_CONSTANT.christmas)
+      return (this.#date - DAY_CONSTANT.startDay) * 100 + PRICE_CONSTANT.christmasBaseDiscountPrice;
     return 0;
   }
 
@@ -44,7 +45,7 @@ class ReservationDate {
    */
   isWeekend() {
     const day = this.#getDate();
-    if (day === DAYS[1] || day === DAYS[2]) return true;
+    if (day === DAY_CONSTANT.days[1] || day === DAY_CONSTANT.days[2]) return true;
     return false;
   }
 
@@ -54,7 +55,7 @@ class ReservationDate {
    */
   isWeekday() {
     const day = this.#getDate();
-    if (!(day === DAYS[1]) && !(day === DAYS[2])) return true;
+    if (!(day === DAY_CONSTANT.days[1]) && !(day === DAY_CONSTANT.days[2])) return true;
     return false;
   }
 
@@ -63,7 +64,7 @@ class ReservationDate {
    * @returns {boolean} isSpecialDiscount
    */
   isSpecialDiscount() {
-    return SPECIAL_DISCOUNT.includes(this.#date);
+    return DAY_CONSTANT.specialDiscountDays.includes(this.#date);
   }
 }
 

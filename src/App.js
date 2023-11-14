@@ -5,7 +5,7 @@ import InputView from './view/InputView.js';
 import Util from './util/Util.js';
 import Discount from './Discount.js';
 import { OUTPUT_VIEW_MESSAGE, INPUT_VIEW_MESSAGE, BENEFIT_MESSAGE } from './constants/message.js';
-import { FOOD, GIFT_NUMBER } from './constants/constant.js';
+import { FOOD, COUNT_CONSTANT } from './constants/constant.js';
 
 class App {
   #menu;
@@ -76,7 +76,7 @@ class App {
   #calculateGift() {
     OutputView.printMessage(INPUT_VIEW_MESSAGE.giftMenu);
     if (this.#menu.isPresentedAmount()) {
-      OutputView.printMessage(`${FOOD.샴페인} ${GIFT_NUMBER}${INPUT_VIEW_MESSAGE.count}`);
+      OutputView.printMessage(`${FOOD.샴페인} ${COUNT_CONSTANT.numberOfGift}${INPUT_VIEW_MESSAGE.count}`);
       return;
     }
     OutputView.printMessage(INPUT_VIEW_MESSAGE.none);

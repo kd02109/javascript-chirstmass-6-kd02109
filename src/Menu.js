@@ -1,6 +1,6 @@
 import Util from './util/Util.js';
 import MenuValidation from './validation/MenuValidation.js';
-import { PRICE, APPETIZER, MAIN, DESSERT, BEVERAGE, PRESENTED_AMOUNT } from './constants/constant.js';
+import { PRICE, APPETIZER, MAIN, DESSERT, BEVERAGE, PRICE_CONSTANT } from './constants/constant.js';
 
 class Menu {
   #main = { ...MAIN };
@@ -70,7 +70,7 @@ class Menu {
    * @returns {boolean} isPresentedAmount
    */
   isPresentedAmount() {
-    if (this.#totalPrice >= PRESENTED_AMOUNT) return true;
+    if (this.#totalPrice >= PRICE_CONSTANT.presentedAmountPrice) return true;
     return false;
   }
 
@@ -82,6 +82,10 @@ class Menu {
     return this.#totalPrice;
   }
 
+  /**
+   * 총 구입 금액이 만원 이상인지 확인합니다.
+   * @returns {boolean} isOverTheTenThounsand
+   */
   isOverTheTenThounsand() {
     return this.#totalPrice >= 10000;
   }

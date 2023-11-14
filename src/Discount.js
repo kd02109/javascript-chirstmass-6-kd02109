@@ -1,11 +1,16 @@
-import { CHRISTMAS_BASE_DISCOUNT, DAYS_DISCOUNT, FOOD, PRICE } from './constants/constant.js';
-import { BEDGE, INPUT_VIEW_MESSAGE } from './constants/message.js';
+import { PRICE_CONSTANT, BEDGE, FOOD, PRICE } from './constants/constant.js';
+import { INPUT_VIEW_MESSAGE } from './constants/message.js';
 
 class Discount {
   #menu;
 
   #reservationDate;
 
+  /**
+   *
+   * @param {Menu} menu class Menu Instance
+   * @param {ReservationDate} reservationDate class ReservationDate instance
+   */
   constructor(menu, reservationDate) {
     this.#menu = menu;
     this.#reservationDate = reservationDate;
@@ -16,7 +21,7 @@ class Discount {
    * @returns {number} christmasPrice
    */
   calculateChristmasDayEvent() {
-    let christmasPrice = 0;
+    let christmasPrice = PRICE_CONSTANT.baseDiscountPrice;
     if (this.#menu.isOverTheTenThounsand()) {
       christmasPrice = this.#reservationDate.calculateChristmasDiscount();
     }
@@ -28,9 +33,9 @@ class Discount {
    * @returns {number} weekdayPrice
    */
   calculateWeekdayEvent() {
-    let discount = 0;
+    let discount = PRICE_CONSTANT.baseDiscountPrice;
     if (this.#reservationDate.isWeekday() && this.#menu.isOverTheTenThounsand()) {
-      discount = this.#menu.calcultaeTotalDessert() * DAYS_DISCOUNT;
+      discount = this.#menu.calcultaeTotalDessert() * PRICE_CONSTANT.daysDiscountPrice;
     }
     return discount;
   }
@@ -40,9 +45,9 @@ class Discount {
    * @returns {number} weekdayPrice
    */
   calculateWeekendEvent() {
-    let discount = 0;
+    let discount = PRICE_CONSTANT.baseDiscountPrice;
     if (this.#reservationDate.isWeekend() && this.#menu.isOverTheTenThounsand()) {
-      discount = this.#menu.calcultaeTotalMain() * DAYS_DISCOUNT;
+      discount = this.#menu.calcultaeTotalMain() * PRICE_CONSTANT.daysDiscountPrice;
     }
     return discount;
   }
@@ -52,9 +57,9 @@ class Discount {
    * @returns {number} specialDiscount
    */
   calculateSpecial() {
-    let discount = 0;
+    let discount = PRICE_CONSTANT.baseDiscountPrice;
     if (this.#reservationDate.isSpecialDiscount() && this.#menu.isOverTheTenThounsand()) {
-      discount = CHRISTMAS_BASE_DISCOUNT;
+      discount = PRICE_CONSTANT.specialDicountPrice;
     }
     return discount;
   }
@@ -64,7 +69,7 @@ class Discount {
    * @returns {number} giftDiscount
    */
   calculateGiftEvent() {
-    let discount = 0;
+    let discount = PRICE_CONSTANT.baseDiscountPrice;
     if (this.#menu.isPresentedAmount() && this.#menu.isOverTheTenThounsand()) {
       discount = PRICE[FOOD.샴페인];
     }
@@ -89,6 +94,10 @@ class Discount {
     return INPUT_VIEW_MESSAGE.none;
   }
 
+  /**
+   * 총 할인 금액을 구합니다.
+   * @returns {number} totalDiscount
+   */
   calculateTotalDiscount() {
     return (
       this.calculateChristmasDayEvent() +
@@ -98,14 +107,12 @@ class Discount {
     );
   }
 
+  /**
+   * 총 혜택 금액을 구합니다.
+   * @returns {number} totalBenefitPrice
+   */
   calculateTotalBenefitPrice() {
-    return (
-      this.calculateChristmasDayEvent() +
-      this.calculateWeekdayEvent() +
-      this.calculateWeekendEvent() +
-      this.calculateSpecial() +
-      this.calculateGiftEvent()
-    );
+    return this.calculateTotalDiscount() + this.calculateGiftEvent();
   }
 }
 

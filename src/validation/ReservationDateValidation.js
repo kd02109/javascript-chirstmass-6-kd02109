@@ -1,6 +1,6 @@
 import CustomError from '../error/CustomError.js';
 import { ERROR_MESSAGE } from '../constants/message.js';
-import { START_DAY, END_DAY } from '../constants/constant.js';
+import { DAY_CONSTANT } from '../constants/constant.js';
 
 const ReservationDateValidation = Object.freeze({
   /**
@@ -16,7 +16,7 @@ const ReservationDateValidation = Object.freeze({
    * @param {number} date
    */
   validateUnderAndOver(date) {
-    if (date < START_DAY || date > END_DAY) CustomError.inputView(ERROR_MESSAGE.date);
+    if (date < DAY_CONSTANT.startDay || date > DAY_CONSTANT.endDay) CustomError.inputView(ERROR_MESSAGE.date);
   },
 });
 

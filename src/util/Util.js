@@ -2,7 +2,7 @@ import { INPUT_VIEW_MESSAGE } from '../constants/message.js';
 
 class Util {
   /**
-   *
+   * "타파스-1,제로콜라-1" -> [[타파스,1],[제로콜라,1]]
    * @param {string} data
    * @returns {[string, number][]} array
    */
@@ -14,7 +14,7 @@ class Util {
   }
 
   /**
-   *
+   * 인자로 주어진 객체의 key값을 배열로 추출
    * @param {{[key: string]:number} } data
    * @returns {string[]} array
    */
@@ -23,7 +23,7 @@ class Util {
   }
 
   /**
-   *
+   * 인자로 주어진 객체의 value 값을 배열로 추출
    * @param {{[key: string]: number}} object
    * @returns {number} totalCount
    */

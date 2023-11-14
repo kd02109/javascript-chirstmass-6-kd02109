@@ -1,6 +1,6 @@
 import CustomError from '../error/CustomError.js';
 import { ERROR_MESSAGE } from '../constants/message.js';
-import { FOOD } from '../constants/constant.js';
+import { FOOD, COUNT_CONSTANT } from '../constants/constant.js';
 import Util from '../util/Util.js';
 
 const MenuValidation = Object.freeze({
@@ -16,7 +16,8 @@ const MenuValidation = Object.freeze({
       total += count;
     });
 
-    if (total > 20 || total < 1) CustomError.inputView(ERROR_MESSAGE.moreThan20);
+    if (total > COUNT_CONSTANT.numberOfMaximun || total < COUNT_CONSTANT.numberOfMinmun)
+      CustomError.inputView(ERROR_MESSAGE.moreThan20);
   },
 
   /**
