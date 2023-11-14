@@ -24,6 +24,7 @@ class App {
     this.#previewEventBenefits();
   }
 
+  // init class
   async #initReservationDate() {
     while (true) {
       try {
@@ -48,12 +49,16 @@ class App {
     }
   }
 
+  // show the preview event
   #previewEventBenefits() {
     OutputView.printMessage(this.#reservationDate.makeDateString());
     this.#calculateMenu();
     this.#calculateTotalPriceBeforeDiscount();
     this.#calculateGift();
     this.#calculateDiscoount();
+    this.#calculateTotalBenefit();
+    this.#calcultaeTotalPriceAfterDiscount();
+    this.#calculateEventBedge();
   }
 
   #calculateMenu() {
@@ -77,6 +82,7 @@ class App {
     OutputView.printMessage(INPUT_VIEW_MESSAGE.none);
   }
 
+  // calculate all the benefit prices
   #calculateDiscoount() {
     OutputView.printMessage(INPUT_VIEW_MESSAGE.benefit);
     this.#isChristmasDayEvent();
@@ -116,6 +122,29 @@ class App {
       const priceToString = Util.chagePriceToMinusString(giftPrice);
       OutputView.printMessage(`${BENEFIT_MESSAGE.gift}${priceToString}`);
     }
+  }
+
+  // calculate total price afet calculating benefit and discount
+  #calculateTotalBenefit() {
+    OutputView.printMessage(INPUT_VIEW_MESSAGE.totalBenefitAmount);
+    const totalBenefitPrice = this.#discount.calculateTotalBenefitPrice();
+    if (totalBenefitPrice) {
+      OutputView.printMessage(Util.chagePriceToMinusString(totalBenefitPrice));
+      return;
+    }
+    OutputView.printMessage(INPUT_VIEW_MESSAGE.none);
+  }
+
+  #calcultaeTotalPriceAfterDiscount() {
+    OutputView.printMessage(INPUT_VIEW_MESSAGE.afterDiscount);
+    const totalPriceAfterDiscount = this.#menu.getTotalPrice() - this.#discount.calculateTotalDiscount();
+    OutputView.printMessage(Util.chagePriceToString(totalPriceAfterDiscount));
+  }
+
+  #calculateEventBedge() {
+    OutputView.printMessage(INPUT_VIEW_MESSAGE.bedge);
+    const bedge = this.#discount.calculateBedge();
+    OutputView.printMessage(bedge);
   }
 }
 

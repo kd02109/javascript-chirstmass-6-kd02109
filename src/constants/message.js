@@ -18,16 +18,16 @@ const INPUT_VIEW_MESSAGE = Object.freeze({
 });
 
 const BEDGE = Object.freeze({
-  star: '별',
-  tree: '트리',
-  santa: '산타',
+  star: Object.freeze(['별', 5000]),
+  tree: Object.freeze(['트리', 10000]),
+  santa: Object.freeze(['산타', 20000]),
 });
 
 const ERROR_MESSAGE = Object.freeze({
-  date: '유효하지 않은 날짜입니다. 다시 입력해 주세요.\n',
-  moreThan20: '총 주문 메뉴의 개수는 20개가 넘어가서는 안됩니다.\n',
-  order: '유효하지 않은 주문입니다. 다시 입력해 주세요\n',
-  onlyBeverage: '음료만 주문하는 것은 불가합니다.\n',
+  date: '유효하지 않은 날짜입니다. 다시 입력해 주세요.',
+  moreThan20: '총 주문 메뉴의 개수는 20개가 넘어가서는 안됩니다.',
+  order: '유효하지 않은 주문입니다. 다시 입력해 주세요.',
+  onlyBeverage: '음료만 주문하는 것은 불가합니다.',
 });
 
 const BENEFIT_MESSAGE = Object.freeze({

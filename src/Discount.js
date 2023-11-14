@@ -1,4 +1,5 @@
 import { CHRISTMAS_BASE_DISCOUNT, DAYS_DISCOUNT, FOOD, PRICE } from './constants/constant.js';
+import { BEDGE, INPUT_VIEW_MESSAGE } from './constants/message.js';
 
 class Discount {
   #menu;
@@ -68,6 +69,24 @@ class Discount {
       discount = PRICE[FOOD.샴페인];
     }
     return discount;
+  }
+
+  /**
+   * 총 혜택 금액에 따라 어떤 베지를 받을 수 있는지 계산합니다.
+   * @returns {"산타"|"트리"|"별"|"없음"} bedge
+   */
+  calculateBedge() {
+    const totalBenefit = this.calculateTotalBenefitPrice();
+    if (totalBenefit >= BEDGE.santa[1]) {
+      return BEDGE.santa[0];
+    }
+    if (totalBenefit >= BEDGE.tree[1]) {
+      return BEDGE.tree[0];
+    }
+    if (totalBenefit >= BEDGE.star[1]) {
+      return BEDGE.star[0];
+    }
+    return INPUT_VIEW_MESSAGE.none;
   }
 
   calculateTotalDiscount() {
