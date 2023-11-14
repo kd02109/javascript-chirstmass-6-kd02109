@@ -13,6 +13,7 @@ const INPUT_VIEW_MESSAGE = Object.freeze({
   afterDiscount: '\n<할인 후 예상 결제 금액>',
   bedge: '\n<12월 이벤트 배지>',
   won: '원',
+  count: '개',
   none: '없음',
   blank: '',
 });

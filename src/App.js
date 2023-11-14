@@ -4,6 +4,7 @@ import OutputView from './view/OutputView.js';
 import InputView from './view/InputView.js';
 import Util from './util/Util.js';
 import { OUTPUT_VIEW_MESSAGE, INPUT_VIEW_MESSAGE } from './constants/message.js';
+import { FOOD, GIFT_NUMBER } from './constants/constant.js';
 
 class App {
   #menu;
@@ -46,6 +47,7 @@ class App {
     OutputView.printMessage(this.#reservationDate.makeDateString());
     this.#calculateMenu();
     this.#calculateTotalPriceBeforeDiscount();
+    this.#calculateGift();
   }
 
   #calculateMenu() {
@@ -58,6 +60,15 @@ class App {
     OutputView.printMessage(INPUT_VIEW_MESSAGE.totalPrice);
     const totalPrice = Util.chagePriceToString(this.#menu.getTotalPrice());
     OutputView.printMessage(`${totalPrice}${INPUT_VIEW_MESSAGE.won}`);
+  }
+
+  #calculateGift() {
+    OutputView.printMessage(INPUT_VIEW_MESSAGE.giftMenu);
+    if (this.#menu.isPresentedAmount()) {
+      OutputView.printMessage(`${FOOD.샴페인} ${GIFT_NUMBER}${INPUT_VIEW_MESSAGE.count}`);
+      return;
+    }
+    OutputView.printMessage(INPUT_VIEW_MESSAGE.none);
   }
 }
 
