@@ -16,7 +16,7 @@ class Discount {
    */
   calculateChristmasDayEvent() {
     let christmasPrice = 0;
-    if (this.#menu.isOvertheTenThounsand()) {
+    if (this.#menu.isOverTheTenThounsand()) {
       christmasPrice = this.#reservationDate.calculateChristmasDiscount();
     }
     return christmasPrice;
@@ -28,7 +28,7 @@ class Discount {
    */
   calculateWeekdayEvent() {
     let discount = 0;
-    if (this.#reservationDate.isWeekday() && this.#menu.isOvertheTenThounsand()) {
+    if (this.#reservationDate.isWeekday() && this.#menu.isOverTheTenThounsand()) {
       discount = this.#menu.calcultaeTotalDessert() * DAYS_DISCOUNT;
     }
     return discount;
@@ -40,7 +40,7 @@ class Discount {
    */
   calculateWeekendEvent() {
     let discount = 0;
-    if (this.#reservationDate.isWeekend() && this.#menu.isOvertheTenThounsand()) {
+    if (this.#reservationDate.isWeekend() && this.#menu.isOverTheTenThounsand()) {
       discount = this.#menu.calcultaeTotalMain() * DAYS_DISCOUNT;
     }
     return discount;
@@ -52,7 +52,7 @@ class Discount {
    */
   calculateSpecial() {
     let discount = 0;
-    if (this.#reservationDate.isSpecialDiscount() && this.#menu.isOvertheTenThounsand()) {
+    if (this.#reservationDate.isSpecialDiscount() && this.#menu.isOverTheTenThounsand()) {
       discount = CHRISTMAS_BASE_DISCOUNT;
     }
     return discount;
@@ -64,7 +64,7 @@ class Discount {
    */
   calculateGiftEvent() {
     let discount = 0;
-    if (this.#menu.isPresentedAmount() && this.#menu.isOvertheTenThounsand()) {
+    if (this.#menu.isPresentedAmount() && this.#menu.isOverTheTenThounsand()) {
       discount = PRICE[FOOD.샴페인];
     }
     return discount;

@@ -82,8 +82,8 @@ class Menu {
     return this.#totalPrice;
   }
 
-  isOvertheTenThounsand() {
-    return this.#totalPrice > 10000;
+  isOverTheTenThounsand() {
+    return this.#totalPrice >= 10000;
   }
 }
 
