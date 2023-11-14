@@ -81,6 +81,10 @@ class Menu {
   getTotalPrice() {
     return this.#totalPrice;
   }
+
+  isOvertheTenThounsand() {
+    return this.#totalPrice > 10000;
+  }
 }
 
 export default Menu;

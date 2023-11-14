@@ -15,7 +15,6 @@ const INPUT_VIEW_MESSAGE = Object.freeze({
   won: '원',
   count: '개',
   none: '없음',
-  blank: '',
 });
 
 const BEDGE = Object.freeze({
@@ -31,5 +30,13 @@ const ERROR_MESSAGE = Object.freeze({
   onlyBeverage: '음료만 주문하는 것은 불가합니다.\n',
 });
 
-export const MESSAGE = { OUTPUT_VIEW_MESSAGE, INPUT_VIEW_MESSAGE, BEDGE, ERROR_MESSAGE };
-export { OUTPUT_VIEW_MESSAGE, INPUT_VIEW_MESSAGE, BEDGE, ERROR_MESSAGE };
+const BENEFIT_MESSAGE = Object.freeze({
+  christmas: '크리스마스 디데이 할인: ',
+  weekday: '평일 할인: ',
+  weekend: '주말 할인: ',
+  special: '특별 할인: ',
+  gift: '증정 이벤트: ',
+});
+
+export const MESSAGE = { OUTPUT_VIEW_MESSAGE, INPUT_VIEW_MESSAGE, BEDGE, ERROR_MESSAGE, BENEFIT_MESSAGE };
+export { OUTPUT_VIEW_MESSAGE, INPUT_VIEW_MESSAGE, BEDGE, ERROR_MESSAGE, BENEFIT_MESSAGE };

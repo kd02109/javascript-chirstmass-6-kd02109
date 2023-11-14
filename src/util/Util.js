@@ -1,3 +1,5 @@
+import { INPUT_VIEW_MESSAGE } from '../constants/message.js';
+
 class Util {
   /**
    *
@@ -31,12 +33,21 @@ class Util {
   }
 
   /**
-   *
+   * 100000 -> '100,000원'으로 변경
    * @param {number} price
    * @returns {string} totalCount
    */
   static chagePriceToString(price) {
-    return price.toLocaleString();
+    return `${price.toLocaleString()}${INPUT_VIEW_MESSAGE.won}`;
+  }
+
+  /**
+   * 100000 -> '-100,000원'으로 변경
+   * @param {number} price
+   * @returns {string} totalCount
+   */
+  static chagePriceToMinusString(price) {
+    return `${(-price).toLocaleString()}${INPUT_VIEW_MESSAGE.won}`;
   }
 }
 
