@@ -85,42 +85,18 @@ class App {
   // calculate all the benefit prices
   #calculateDiscoount() {
     OutputView.printMessage(INPUT_VIEW_MESSAGE.benefit);
-    this.#isChristmasDayEvent();
-    this.#isDaysEvent(this.#discount.calculateWeekdayEvent(), BENEFIT_MESSAGE.weekday);
-    this.#isDaysEvent(this.#discount.calculateWeekendEvent(), BENEFIT_MESSAGE.weekend);
-    this.#isSpecial();
-    this.#isGiftEvent();
+    this.#isEvent(this.#discount.calculateChristmasDayEvent(), BENEFIT_MESSAGE.christmas);
+    this.#isEvent(this.#discount.calculateWeekdayEvent(), BENEFIT_MESSAGE.weekday);
+    this.#isEvent(this.#discount.calculateWeekendEvent(), BENEFIT_MESSAGE.weekend);
+    this.#isEvent(this.#discount.calculateSpecial(), BENEFIT_MESSAGE.special);
+    this.#isEvent(this.#discount.calculateGiftEvent(), BENEFIT_MESSAGE.gift);
     if (!this.#discount.calculateTotalBenefitPrice()) OutputView.printMessage(INPUT_VIEW_MESSAGE.none);
   }
 
-  #isChristmasDayEvent() {
-    const christmasPrice = this.#discount.calculateChristmasDayEvent();
-    if (christmasPrice) {
-      const priceToString = Util.chagePriceToMinusString(christmasPrice);
-      OutputView.printMessage(`${BENEFIT_MESSAGE.christmas}${priceToString}`);
-    }
-  }
-
-  #isDaysEvent(discount, message) {
+  #isEvent(discount, message) {
     if (discount) {
       const priceToString = Util.chagePriceToMinusString(discount);
       OutputView.printMessage(`${message}${priceToString}`);
-    }
-  }
-
-  #isSpecial() {
-    const specialPrice = this.#discount.calculateSpecial();
-    if (specialPrice) {
-      const priceToString = Util.chagePriceToMinusString(specialPrice);
-      OutputView.printMessage(`${BENEFIT_MESSAGE.special}${priceToString}`);
-    }
-  }
-
-  #isGiftEvent() {
-    const giftPrice = this.#discount.calculateGiftEvent();
-    if (giftPrice) {
-      const priceToString = Util.chagePriceToMinusString(giftPrice);
-      OutputView.printMessage(`${BENEFIT_MESSAGE.gift}${priceToString}`);
     }
   }
 
