@@ -1,6 +1,7 @@
 import Menu from '../src/Menu.js';
 import ReservationDate from '../src/ReservationDate.js';
 import Discount from '../src/Discount.js';
+import { BEDGE, INPUT_VIEW_MESSAGE } from '../src/constants/message.js';
 
 describe('Discount Class 기능 검증 구현', () => {
   // given
@@ -118,5 +119,25 @@ describe('Discount Class 기능 검증 구현', () => {
 
     // then
     expect(discount.calculateTotalDiscount()).toBe(result);
+  });
+
+  // given
+  test.each([
+    [['3', '아이스크림-1, 바비큐립-1', INPUT_VIEW_MESSAGE.none]],
+    [['10', '타파스-1,제로콜라-1', INPUT_VIEW_MESSAGE.none]],
+    [['17', '타파스-1,제로콜라-1,크리스마스파스타-1, 초코케이크-1', BEDGE.star[0]]],
+    [['15', '티본스테이크-2, 아이스크림-2', BEDGE.santa[0]]],
+    [['25', '해산물파스타-1, 아이스크림-3', BEDGE.tree[0]]],
+    [['23', '해산물파스타-1, 바비큐립-1, 레드와인-1, 아이스크림-2', BEDGE.santa[0]]],
+    [['24', '아이스크림-1', INPUT_VIEW_MESSAGE.none]],
+    [['31', '레드와인-1, 아이스크림-2, 타파스-1', BEDGE.star[0]]],
+  ])('총 혜택 금엑에 따른 베지를 정확하게 계산하는지 Test', ([day, menu, result]) => {
+    // when
+    const food = new Menu(menu);
+    const reservationDay = new ReservationDate(day);
+    const discount = new Discount(food, reservationDay);
+
+    // then
+    expect(discount.calculateBedge()).toBe(result);
   });
 });
