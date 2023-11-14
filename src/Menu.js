@@ -70,8 +70,15 @@ class Menu {
    * @returns {boolean} isPresentedAmount
    */
   isPresentedAmount() {
-    if (this.#totalPrice >= PRICE_CONSTANT.presentedAmountPrice) return true;
-    return false;
+    return this.#totalPrice >= PRICE_CONSTANT.presentedAmountPrice;
+  }
+
+  /**
+   * 총 구입 금액이 기준 금액 이상 여부에 따라서 이벤트 혜택 여부를 확인합니다.
+   * @returns {boolean} 이벤트 대상 여부를 확인합니다.
+   */
+  isEvent() {
+    return this.#totalPrice >= 10000;
   }
 
   /**
@@ -80,14 +87,6 @@ class Menu {
    */
   getTotalPrice() {
     return this.#totalPrice;
-  }
-
-  /**
-   * 총 구입 금액이 만원 이상인지 확인합니다.
-   * @returns {boolean} isOverTheTenThounsand
-   */
-  isOverTheTenThounsand() {
-    return this.#totalPrice >= 10000;
   }
 }
 

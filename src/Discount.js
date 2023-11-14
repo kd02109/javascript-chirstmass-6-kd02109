@@ -22,7 +22,7 @@ class Discount {
    */
   calculateChristmasDayEvent() {
     let christmasPrice = PRICE_CONSTANT.baseDiscountPrice;
-    if (this.#menu.isOverTheTenThounsand()) {
+    if (this.#menu.isEvent()) {
       christmasPrice = this.#reservationDate.calculateChristmasDiscount();
     }
     return christmasPrice;
@@ -34,7 +34,7 @@ class Discount {
    */
   calculateWeekdayEvent() {
     let discount = PRICE_CONSTANT.baseDiscountPrice;
-    if (this.#reservationDate.isWeekday() && this.#menu.isOverTheTenThounsand()) {
+    if (this.#reservationDate.isWeekday() && this.#menu.isEvent()) {
       discount = this.#menu.calcultaeTotalDessert() * PRICE_CONSTANT.daysDiscountPrice;
     }
     return discount;
@@ -46,7 +46,7 @@ class Discount {
    */
   calculateWeekendEvent() {
     let discount = PRICE_CONSTANT.baseDiscountPrice;
-    if (this.#reservationDate.isWeekend() && this.#menu.isOverTheTenThounsand()) {
+    if (this.#reservationDate.isWeekend() && this.#menu.isEvent()) {
       discount = this.#menu.calcultaeTotalMain() * PRICE_CONSTANT.daysDiscountPrice;
     }
     return discount;
@@ -58,7 +58,7 @@ class Discount {
    */
   calculateSpecial() {
     let discount = PRICE_CONSTANT.baseDiscountPrice;
-    if (this.#reservationDate.isSpecialDiscount() && this.#menu.isOverTheTenThounsand()) {
+    if (this.#reservationDate.isSpecialDiscount() && this.#menu.isEvent()) {
       discount = PRICE_CONSTANT.specialDicountPrice;
     }
     return discount;
@@ -70,7 +70,7 @@ class Discount {
    */
   calculateGiftEvent() {
     let discount = PRICE_CONSTANT.baseDiscountPrice;
-    if (this.#menu.isPresentedAmount() && this.#menu.isOverTheTenThounsand()) {
+    if (this.#menu.isPresentedAmount() && this.#menu.isEvent()) {
       discount = PRICE[FOOD.샴페인];
     }
     return discount;
