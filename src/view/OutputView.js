@@ -16,7 +16,7 @@ const OutputView = Object.freeze({
    * @param {{[key: string]:number}} message
    */
   printMenu(object) {
-    const foodNames = Util.extractFoodName(object);
+    const foodNames = Util.extractKeys(object);
     foodNames.forEach((food) => {
       if (object[food]) Console.print(`${food} ${object[food]}${INPUT_VIEW_MESSAGE.count}`);
     });

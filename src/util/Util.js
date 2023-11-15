@@ -18,16 +18,16 @@ class Util {
    * @param {{[key: string]:number} } data
    * @returns {string[]} array
    */
-  static extractFoodName(data) {
+  static extractKeys(data) {
     return Object.keys(data);
   }
 
   /**
-   * 인자로 주어진 객체의 value 값을 배열로 추출
+   * 인자로 주어진 객체의 value 값을 추출하고 모두 더합니다.
    * @param {{[key: string]: number}} object
    * @returns {number} totalCount
    */
-  static extractFoodTotalCount(object) {
+  static extractValuesAndSum(object) {
     const countList = Object.values(object);
     return countList.reduce((acc, cur) => acc + cur);
   }

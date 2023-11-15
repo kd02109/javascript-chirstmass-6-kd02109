@@ -36,7 +36,7 @@ const MenuValidation = Object.freeze({
    * @param {[string, number][]} data
    */
   validateOnlyBeverage(object, data) {
-    const foodNames = Util.extractFoodName(object);
+    const foodNames = Util.extractKeys(object);
     const dataFoodName = data.map((item) => item[0]);
     const dataFoodCount = data.map((item) => item[1]);
 

@@ -40,7 +40,7 @@ class Menu {
    * @returns {number} totalDessert
    */
   calcultaeTotalDessert() {
-    return Util.extractFoodTotalCount(this.#dessert);
+    return Util.extractValuesAndSum(this.#dessert);
   }
 
   /**
@@ -48,7 +48,7 @@ class Menu {
    * @returns {number} totalMainMenu
    */
   calcultaeTotalMain() {
-    return Util.extractFoodTotalCount(this.#main);
+    return Util.extractValuesAndSum(this.#main);
   }
 
   /**
@@ -57,7 +57,7 @@ class Menu {
    */
   calculateBuyingMenu() {
     const totalFood = { ...this.#appetizer, ...this.#main, ...this.#dessert, ...this.#beverage };
-    const foodNames = Util.extractFoodName(totalFood);
+    const foodNames = Util.extractKeys(totalFood);
     const buyingMenu = {};
     foodNames.forEach((food) => {
       if (totalFood[food]) buyingMenu[food] = totalFood[food];
