@@ -42,8 +42,7 @@ const MenuValidation = Object.freeze({
 
     const notBeverage = foodNames.find((food) => {
       const index = dataFoodName.indexOf(food);
-      if (index !== -1 && dataFoodCount[index] !== 0) return true;
-      return false;
+      return index !== -1 && dataFoodCount[index] !== 0;
     });
 
     if (!notBeverage) CustomError.inputView(ERROR_MESSAGE.onlyBeverage);

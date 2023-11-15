@@ -34,8 +34,9 @@ class ReservationDate {
    * @returns {number} christmasDiscount
    */
   calculateChristmasDiscount() {
-    if (this.#date <= DAY_CONSTANT.christmas)
+    if (this.#date <= DAY_CONSTANT.christmas) {
       return (this.#date - DAY_CONSTANT.startDay) * 100 + PRICE_CONSTANT.christmasBaseDiscountPrice;
+    }
     return 0;
   }
 
@@ -45,8 +46,7 @@ class ReservationDate {
    */
   isWeekend() {
     const day = this.#getDate();
-    if (day === DAY_CONSTANT.days[1] || day === DAY_CONSTANT.days[2]) return true;
-    return false;
+    return day === DAY_CONSTANT.days[1] || day === DAY_CONSTANT.days[2];
   }
 
   /**
@@ -55,8 +55,7 @@ class ReservationDate {
    */
   isWeekday() {
     const day = this.#getDate();
-    if (!(day === DAY_CONSTANT.days[1]) && !(day === DAY_CONSTANT.days[2])) return true;
-    return false;
+    return !(day === DAY_CONSTANT.days[1]) && !(day === DAY_CONSTANT.days[2]);
   }
 
   /**
