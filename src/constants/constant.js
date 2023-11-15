@@ -80,6 +80,14 @@ const BEDGE = Object.freeze({
   santa: Object.freeze(['산타', 20000]),
 });
 
+const BENEFIT_MESSAGE = Object.freeze({
+  christmas: ['크리스마스 디데이 할인: ', 'calculateChristmasDayEvent'],
+  weekday: ['평일 할인: ', 'calculateWeekdayEvent'],
+  weekend: ['주말 할인: ', 'calculateWeekendEvent'],
+  special: ['특별 할인: ', 'calculateSpecial'],
+  gift: ['증정 이벤트: ', 'calculateGiftEvent'],
+});
+
 export const CONSTANT_OBJ = {
   FOOD,
   PRICE,
@@ -91,6 +99,19 @@ export const CONSTANT_OBJ = {
   PRICE_CONSTANT,
   COUNT_CONSTANT,
   BEDGE,
+  BENEFIT_MESSAGE,
 };
 
-export { FOOD, PRICE, MAIN, APPETIZER, DESSERT, BEVERAGE, DAY_CONSTANT, PRICE_CONSTANT, COUNT_CONSTANT, BEDGE };
+export {
+  FOOD,
+  PRICE,
+  MAIN,
+  APPETIZER,
+  DESSERT,
+  BEVERAGE,
+  DAY_CONSTANT,
+  PRICE_CONSTANT,
+  COUNT_CONSTANT,
+  BEDGE,
+  BENEFIT_MESSAGE,
+};

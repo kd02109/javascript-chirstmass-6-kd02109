@@ -4,8 +4,8 @@ import OutputView from './view/OutputView.js';
 import InputView from './view/InputView.js';
 import Util from './util/Util.js';
 import Discount from './Discount.js';
-import { OUTPUT_VIEW_MESSAGE, INPUT_VIEW_MESSAGE, BENEFIT_MESSAGE } from './constants/message.js';
-import { FOOD, COUNT_CONSTANT } from './constants/constant.js';
+import { OUTPUT_VIEW_MESSAGE, INPUT_VIEW_MESSAGE } from './constants/message.js';
+import { FOOD, COUNT_CONSTANT, BENEFIT_MESSAGE } from './constants/constant.js';
 
 class App {
   #menu;
@@ -85,15 +85,23 @@ class App {
   // calculate all the benefit prices
   #calculateDiscoount() {
     OutputView.printMessage(INPUT_VIEW_MESSAGE.benefit);
-    this.#isEvent(this.#discount.calculateChristmasDayEvent(), BENEFIT_MESSAGE.christmas);
-    this.#isEvent(this.#discount.calculateWeekdayEvent(), BENEFIT_MESSAGE.weekday);
-    this.#isEvent(this.#discount.calculateWeekendEvent(), BENEFIT_MESSAGE.weekend);
-    this.#isEvent(this.#discount.calculateSpecial(), BENEFIT_MESSAGE.special);
-    this.#isEvent(this.#discount.calculateGiftEvent(), BENEFIT_MESSAGE.gift);
-    if (!this.#discount.calculateTotalBenefitPrice()) OutputView.printMessage(INPUT_VIEW_MESSAGE.none);
+
+    if (!this.#discount.calculateTotalBenefitPrice() || !this.#menu.isEvent()) {
+      OutputView.printMessage(INPUT_VIEW_MESSAGE.none);
+      return;
+    }
+
+    this.#implementEvent();
   }
 
-  #isEvent(discount, message) {
+  #implementEvent() {
+    const keys = Util.extractKeys(BENEFIT_MESSAGE);
+    keys.forEach((event) => {
+      this.#calculateEvent(BENEFIT_MESSAGE[event][0], this.#discount[BENEFIT_MESSAGE[event][1]]());
+    });
+  }
+
+  #calculateEvent(message, discount) {
     if (discount) {
       const priceToString = Util.chagePriceToMinusString(discount);
       OutputView.printMessage(`${message}${priceToString}`);
